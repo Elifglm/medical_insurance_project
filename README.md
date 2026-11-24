@@ -15,12 +15,12 @@ End-to-end machine learning project on a 100,000-row medical insurance dataset (
 | Classification | Random Forest | Accuracy 0.79 · F1 0.79 |
 | Classification | **LightGBM** (selected) | **Accuracy 0.81 · F1 0.81** |
 
-Columns that directly reveal the target (`annual_premium`, `monthly_premium`, `total_claims_paid`) are dropped before training to avoid leakage.
+Premium and claims-paid columns (`annual_premium`, `monthly_premium`, `total_claims_paid`) are excluded from the features.
 
 ## Workflow
 
 1. **Exploration:** distributions, correlations, outlier visualization.
-2. **Cleaning:** missing value imputation, removal of invalid rows.
+2. **Cleaning:** missing value imputation, removal of invalid values, outlier removal (top 0.1% of income and cost columns).
 3. **Feature engineering:** one-hot encoding, scaling.
 4. **Modeling:** baseline vs. tree-based models, compared on a held-out 20% test split.
 5. **Serving:** trained models saved with `joblib` and loaded by the Streamlit app.
